@@ -1,0 +1,162 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body{
+    font-family: 'OCR A Std', monospace;
+    display: flex;
+    height: 100vh;
+    overflow: hidden;
+    background-color: rgb(159, 164, 209);
+    margin: 0;
+}
+
+/* button menu*/
+.btn-menu{
+    text-align: center;
+    color: #e9237b;
+    margin-bottom: 5px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-left: 5px;
+    width: 70%;
+    text-align: center;
+    border-radius: 7px;
+    cursor: pointer;
+    }
+    /*hover for button menu*/
+    .btn-menu:hover {
+        background-color: #cccccc;
+    }
+/* side profile where button */
+.containerD-btn{
+    border: none;
+    margin-bottom: 50px;
+    padding-left: 50px;
+    padding-top: 50px;
+    padding-bottom: 140px;
+    background-color: #e9237b;
+    width: 250px;
+    margin: 0;
+    text-align: left;
+    }
+/*welcome message for admin*/
+.welcomeMessage{
+    font-size: large;
+    padding: 3px;
+    margin-bottom: 15px;
+    margin-right: 30px;
+    position: center;
+    font-family: 'Courier New', Courier, monospace;
+    color: whitesmoke;
+}
+  
+  p {
+    font-family: 'OCR A Std', monospace;
+  }
+/*image*/
+.logo{
+    width: 125px;
+    height: 125px;
+    margin-bottom: 15px;
+    margin-top: 0px;
+    margin-left: 20px;
+}
+     
+/*content where display when button click*/
+.contentD {
+    border: none;
+    background-color:#ffedfa; 
+    overflow-y: auto;
+    flex: 1;
+    color: rgb(0, 0, 0);
+    height: 100vh;
+    padding-left: 30px;
+    padding-top: 30px;
+    padding-bottom: 0px;
+    background-image: url('images/mainlogo.png');
+    background-blend-mode:darken;
+    background-size: cover;
+    background-repeat: no-repeat; 
+    background-size: 300px 300px; 
+    background-position: center;
+}
+
+.orderStatusDeliveryModal {
+    display: none; /* Initially hidden */
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    z-index: 1000; /* Ensure it's on top of other elements */
+}
+
+  /*table head for view list assigned order*/
+  .viewAssignOrders .thead{
+    background-color: #e9237b;
+    padding: 10 20;
+    color: #ffffff;
+    text-align: center;
+}
+  /*table body for list  completed order*/
+  .viewCompletedOrders .tbody{
+    background-color: #ffffff;
+    text-align: center;
+    color: #000000;
+}
+
+  /*table head for view list completed order*/
+  .viewCompletedOrders .thead{
+    text-align: center;
+    background-color: #e9237b;
+    padding: 10 20;
+    color: #ffffff;
+}
+  /*table body for list  assigned order*/
+  .viewAssignOrders .tbody{
+    background-color: #ffffff;
+    text-align: center;
+    color: #000000;
+}
+
+.orderStatusDeliveryModal .modal-content {
+    display: block;
+}
+
+.viewAssignOrders {
+    text-align: center;
+    color: #e9237b;
+    margin-bottom: 40px;
+    font-size: 20px;
+}
+.viewOngoingOrders {
+    display: none;
+}
+.viewCompletedOrders{
+    text-align: center;
+    color: #e9237b;
+    margin-bottom: 40px;
+    font-size: 20px;
+}
+.logOut {
+    display: none;
+}
+.notification {
+    margin: 20px;
+    padding: 10px;
+    background-color: #f1f1f1;
+    border-radius: 5px;
+    border: 1px solid #ddd;
+  }
+.order-status {
+    margin-top: 20px;
+    font-size: 18px;
+    color: #4caf50;
+}
+    

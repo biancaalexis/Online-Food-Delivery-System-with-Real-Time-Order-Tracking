@@ -1,0 +1,559 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>craveIT</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <style>
+    /* Custom CSS */
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+    }
+
+    .navbar {
+      background-color: #343a40;
+      padding: 1rem;
+    }
+
+    .navbar-brand {
+      color: white;
+      text-decoration: none;
+      font-size: 1.5rem;
+    }
+
+    .navbar-toggler {
+      display: none;
+    }
+
+    .navbar-nav {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      display: flex;
+      justify-content: flex-end;
+    }
+
+    .nav-item {
+      margin-left: 1rem;
+    }
+
+    .nav-link {
+      color: white;
+      text-decoration: none;
+      padding: 0.5rem 1rem;
+      display: block;
+    }
+
+    .dropdown-menu {
+      display: none;
+      position: absolute;
+      background-color: white;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      padding: 0.5rem;
+    }
+
+    .nav-item:hover .dropdown-menu {
+      display: block;
+    }
+
+    .dropdown-item {
+      color: black;
+      text-decoration: none;
+      display: block;
+      padding: 0.5rem 1rem;
+    }
+
+    .dropdown-item:hover {
+      background-color: #f8f9fa;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 2rem;
+    }
+
+    .card {
+      border: 1px solid #ddd;
+      border-radius: 4px;
+      overflow: hidden;
+      margin-bottom: 2rem;
+    }
+
+    .card-img-top {
+      width: 100%;
+      height: 200px;
+      background-color: #ddd;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.5em;
+      color: #666;
+    }
+
+    .card-body {
+      padding: 1rem;
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 0.5rem 1rem;
+      border: none;
+      border-radius: 4px;
+      color: white;
+      text-decoration: none;
+      text-align: center;
+      cursor: pointer;
+    }
+
+    .btn-primary {
+      background-color: #007bff;
+    }
+
+    .btn-success {
+      background-color: #28a745;
+    }
+
+    .btn-light {
+      background-color: #f8f9fa;
+      color: black;
+    }
+
+    .modal {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.5);
+      justify-content: center;
+      align-items: center;
+    }
+
+    .modal-content {
+      background-color: white;
+      padding: 2rem;
+      border-radius: 4px;
+      max-width: 500px;
+      width: 100%;
+    }
+
+    .modal-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .modal-title {
+      font-size: 1.25rem;
+    }
+
+    .modal-body {
+      margin-top: 1rem;
+    }
+
+    .form-group {
+      margin-bottom: 1rem;
+    }
+
+    .form-control {
+      width: 100%;
+      padding: 0.5rem;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+    }
+
+    .modal-footer {
+      display: flex;
+      justify-content: flex-end;
+      margin-top: 1rem;
+    }
+
+    .close {
+      cursor: pointer;
+    }
+
+      /* Custom CSS for Laptop Page */
+      body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+      }
+  
+      .container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 2rem;
+      }
+  
+      .product-card {
+        border: 1px solid #ddd;
+        border-radius: 4px;
+        overflow: hidden;
+        margin-bottom: 2rem;
+        cursor: pointer;
+        position: relative;
+      }
+  
+      .product-card img {
+        width: 100%;
+        height: 200px;
+        object-fit: cover;
+      }
+  
+      .product-card-body {
+        padding: 1rem;
+      }
+  
+      .product-card-title {
+        font-size: 1.25rem;
+        margin-bottom: 0.5rem;
+      }
+  
+      .product-card-text {
+        margin-bottom: 1rem;
+      }
+  
+      .product-card-details {
+        display: none;
+        padding: 1rem;
+        background-color: #f9f9f9;
+      }
+  
+      .product-card-details p {
+        margin: 0.5rem 0;
+      }
+  
+      .product-card-details .quantity {
+        margin-top: 1rem;
+        display: flex;
+        align-items: center;
+      }
+  
+      .quantity input {
+        width: 60px;
+        margin-right: 1rem;
+      }
+  
+      .btn {
+        display: inline-block;
+        padding: 0.5rem 1rem;
+        border: none;
+        border-radius: 4px;
+        color: white;
+        text-decoration: none;
+        text-align: center;
+        cursor: pointer;
+      }
+  
+      .btn-primary {
+        background-color: #007bff;
+      }
+  
+      .btn-success {
+        background-color: #28a745;
+      }
+  </style>
+  
+  
+</head>
+<body>
+<div class="header">
+  <nav class="navbar">
+    <a class="navbar-brand" href="#">TECHshop</a>
+    <button class="navbar-toggler" type="button">
+      <span>&#9776;</span>
+    </button>
+    <ul class="navbar-nav">
+      <li class="nav-item active">
+        <a class="nav-link" href="index.html">Home</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#">Cart</a>
+      </li>
+      <li class="nav-item" id="accountSection" style="display: none;">
+        <a class="nav-link" href="#" data-modal="accountModal">Account</a>
+      </li>
+      <li class="nav-item" id="logoutSection" style="display: none;">
+        <a class="nav-link" href="#" id="logoutBtn">Logout</a>
+      </li>
+      <li class="nav-item" id="signupSection">
+        <a class="nav-link" href="#" data-modal="modalRegisterForm">Sign Up</a>
+      </li>
+      <li class="nav-item" id="signinSection">
+        <a class="nav-link" href="#" data-modal="modalSignForm">Sign In</a>
+      </li>
+      <li class="nav-item dropdown">
+        <a class="nav-link" href="#">Help</a>
+        <div class="dropdown-menu">
+          <a class="dropdown-item" href="#">Action</a>
+          <a class="dropdown-item" href="#">Another action</a>
+          <a class="dropdown-item" href="#">Something else</a>
+        </div>
+      </li>
+    </ul>
+  </nav>
+
+  <div class="modal" id="accountModal">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">User Information</h5>
+        <span class="close" data-modal="accountModal">&times;</span>
+      </div>
+      <div class="modal-body">
+        <div class="form-group">
+          <label for="accountUsername">Username</label>
+          <input type="text" class="form-control" id="accountUsername" readonly>
+        </div>
+        <div class="form-group">
+          <label for="accountPhone">Phone Number</label>
+          <input type="text" class="form-control" id="accountPhone" readonly>
+        </div>
+        <div class="form-group">
+          <label for="accountPhone">Role</label>
+          <input type="text" class="form-control" id="accountRole" readonly>
+        </div>
+      </div>
+    </div>
+  </div>
+    <!-- Change this and also documentation -->
+  <div class="container">
+    <h2 class="text-center" id="computersContainer">Laptops</h2>
+    <div class="product-card">
+      <img src="laptop1.jpg" alt="Laptop 1">
+      <div class="product-card-body">
+        <h5 class="product-card-title">Laptop 1</h5>
+        <p class="product-card-text">A high-performance laptop for all your needs.</p>
+      </div>
+      <div class="product-card-details">
+        <p>Processor: Intel i7</p>
+        <p>RAM: 16GB</p>
+        <p>Storage: 512GB SSD</p>
+        <div class="quantity">
+          <input type="number" min="1" value="1">
+          <button class="btn btn-success add-to-cart">Add to Cart</button>
+        </div>
+      </div>
+    </div>
+    <div class="product-card">
+      <img src="laptop2.jpg" alt="Laptop 2">
+      <div class="product-card-body">
+        <h5 class="product-card-title">Laptop 2</h5>
+        <p class="product-card-text">A versatile laptop for both work and play.</p>
+      </div>
+      <div class="product-card-details">
+        <p>Processor: AMD Ryzen 5</p>
+        <p>RAM: 8GB</p>
+        <p>Storage: 256GB SSD</p>
+        <div class="quantity">
+          <input type="number" min="1" value="1">
+          <button class="btn btn-success add-to-cart">Add to Cart</button>
+        </div>
+      </div>
+    </div>
+    <!-- Add more laptop cards as needed -->
+  </div>
+  
+  
+  <div class="modal" id="modalRegisterForm">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">Sign Up</h4>
+        <span class="close" data-modal="modalRegisterForm">&times;</span>
+      </div>
+      <div class="modal-body">
+        <form id="registerForm" autocomplete="off">
+          <div class="form-group">
+            <label for="formGroupExampleInput">Username</label>
+            <input type="text" name="name" class="form-control" id="username" placeholder="Username" autocomplete="off">
+          </div>
+          <div class="form-group">
+            <label for="formGroupExampleInput2">Password</label>
+            <input type="password" name="password" class="form-control" id="password" placeholder="Password" autocomplete="off">
+          </div>
+          <div class="form-group row">
+            <div class="col-sm-8">
+              <label for="exampleInputPassword1">Phone</label>
+              <input type="tel" name="phone" id="phone" class="form-control" placeholder="+63" autocomplete="off">
+            </div>
+            <div class="col-sm-4 d-flex align-items-end">
+              <input type="button" id="sendotp" class="form-control btn btn-info" value="sendOtp">
+            </div>
+          </div>
+          <div class="form-group row">
+            <div class="col-sm-12">
+              <input type="text" name="otp" class="form-control" placeholder="Enter Otp" autocomplete="off">
+            </div>
+          </div>
+          <div class="modal-footer d-flex justify-content-center">
+            <button type="button" id="submitBtn" class="btn btn-success">Submit</button>
+            <button class="btn btn-light ml-2" id="resendotp">Resend Otp</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal" id="modalSignForm">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">Sign In</h4>
+        <span class="close" data-modal="modalSignForm">&times;</span>
+      </div>
+      <div class="modal-body">
+        <form id="signInForm" autocomplete="off">
+          <div class="form-group">
+            <label for="SignInUsername">Username</label>
+            <input type="text" name="name" class="form-control" id="SignInUsername" placeholder="Username" autocomplete="off">
+          </div>
+          <div class="form-group">
+            <label for="SignInPassword">Password</label>
+            <input type="password" name="password" class="form-control" id="SignInPassword" placeholder="Password" autocomplete="off">
+          </div>
+          <div class="modal-footer d-flex justify-content-center">
+            <button type="button" id="SignInBtn" class="btn btn-success">Sign In</button>
+            <a href="#" id="forgotPasswordLink">Forgot Password?</a>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal" id="forgotPasswordModal">
+  <div class="modal-content">
+    <div class="modal-header text-center">
+      <h4 class="modal-title w-100 font-weight-bold">Forgot Password</h4>
+      <span class="close" data-modal="forgotPasswordModal">&times;</span>
+    </div>
+    <div class="modal-body">
+      <form id="forgotPasswordForm" autocomplete="off">
+        <div class="form-group">
+          <label for="forgotPhone">Enter Phone Number</label>
+          <input type="tel" name="forgotPhone" id="forgotPhone" class="form-control" placeholder="+63" autocomplete="off">
+        </div>
+        <div class="form-group row">
+          <div class="col-sm-8">
+            <input type="button" id="sendForgotOtp" class="form-control btn btn-info" value="Send OTP">
+          </div>
+          <div class="form-group">
+            <label for="otp">Enter OTP</label>
+            <input type="text" name="otp" id="otp" class="form-control" placeholder="Enter OTP" autocomplete="off">
+          </div>
+        </div>
+        <div class="form-group">
+          <input type="password" name="newPassword" id="newPassword" class="form-control" placeholder="New Password" autocomplete="off">
+        </div>
+        <div class="form-group">
+          <input type="password" name="confirmPassword" id="confirmPassword" class="form-control" placeholder="Confirm Password" autocomplete="off">
+        </div>
+        <div class="modal-footer d-flex justify-content-center">
+          <button type="button" id="submitForgotPasswordBtn" class="btn btn-success">Submit</button>
+          <button class="btn btn-light ml-2" id="resendForgotOtp">Resend OTP</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+
+<script>
+
+  $(document).ready(function() {
+    //function to get and display products by category
+    //computers
+    function fetchProductsByCategory(category) {
+        $.ajax({
+          //adjust the url for backend implementation
+            url: `/products/${category}`, 
+            type: 'GET',
+            dataType: 'json',
+            success: function(products) {
+                const productContainer = $('#computersContainer');
+                //clear existing content on the protototype above
+                productContainer.empty();
+
+                if (products.length > 0) {
+                    $.each(products, function(index, product) {
+                         //create product card on html
+                        const productCard = $('<div class="product-card"></div>');
+
+                        //image
+                        const img = $('<img>').attr('src', `/images/${product.imageFileName}`).attr('alt', product.name);
+                        productCard.append(img);
+
+                        //body
+                        const body = $('<div class="product-card-body"></div>');
+
+                        //title or name
+                        const title = $('<h5 class="product-card-title"></h5>').text(product.name);
+                        body.append(title);
+
+                        //description or specs here
+                        const description = $('<p class="product-card-text"></p>').text(product.description);
+                        body.append(description);
+
+                        //price
+                        const price = $('<p></p>').text(`Price: $${product.price}`);
+                        body.append(price);
+
+                        //quantity
+                        if (product.quantity > 0) {
+                            const quantity = $('<p></p>').text(`Available: ${product.quantity}`);
+                            body.append(quantity);
+                        } else {
+                            const outOfStock = $('<p></p>').text('Out of Stock');
+                            body.append(outOfStock);
+                        }
+
+                        //add to cart button (must have action for this)
+                        //to be updated
+                        const addToCartBtn = $('<button class="btn btn-success add-to-cart">Add to Cart</button>');
+                        body.append(addToCartBtn);
+
+                        productCard.append(body);
+                        productContainer.append(productCard);
+                    });
+                } else {
+                    //when there is no product created
+                    productContainer.append('<p>No products available.</p>');
+                }
+            },
+            fail: function (response) {
+              console.log(response);
+              alert('Failed to fetch products. Please try again.');
+            }
+        });
+    }
+
+    // Function to handle updates triggered by admin backend
+    function listenForUpdates() {
+      //function to executes in milisecconds
+      //10 seconds for 10000
+      setInterval(function() {
+        //retrieves computers category and updating it
+        fetchProductsByCategory('Computers'); 
+      }, 10000); 
+  }
+    //to fetch and display products for computers category
+    fetchProductsByCategory('Computers');
+
+    //for switch categories per ui
+    $('#categoryDropdown').change(function() {
+        const selectedCategory = $(this).val();
+        fetchProductsByCategory(selectedCategory);
+    });
+
+    //listen for updates on the admin backend
+    listenForUpdates();
+});
+
+
+</script>
+<script src="index.js"></script>
+</body>
+</html>

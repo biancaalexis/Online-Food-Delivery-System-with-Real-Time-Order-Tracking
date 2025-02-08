@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Home</title>
+    <link href="https://fonts.googleapis.com/css?family=Noto+Sans+JP&display=swap" rel="stylesheet">
+    <link rel="icon" type="image/png" href="images/c.png">
+    <link rel="stylesheet" href="admin.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="admin.js"></script>
+
+
+</head>
+<body>
+    <!--  notification bar -->
+    <div id="orderNotification" class="notification" style="display:none;">
+        <audio id="orderSound" src="order-notification.mp3" preload="auto"></audio>
+    </div>  
+
+    <div class="container-btn">
+        <img src="images/mainlogo.png" class="logo">
+        <h3 class="welcomeMessage">WELCOME, ADMIN!</h3>
+        <button id="viewProductBtn" class="btn-menu">Product List</button><br>
+        <button id="addProductFormBtn" class="btn-menu">Add Product</button><br>
+        <button id="manageCustomerAccountBtn" class="btn-menu">Manage Customer Account</button><br>
+        <button id="manageAdminAccountBtn" class="btn-menu">Manage Admin Account</button><br>
+        <button id="ordersBtn" class="btn-menu">Orders</button><br>
+        <button id="processOrderBtn" class="btn-menu">Process Order</button><br>
+        <button id="logOutBtn" class="btn-menu">Log Out</button>         
+    </div>
+
+    <div class="content">
+        <div id="viewProcessOrderSection" class="viewProcessOrderAccount">
+            <div id="orderNotification" class="notification" style="display:none;">
+                <audio id="orderSound" src="order-notification.mp3" preload="auto"></audio>
+            </div>  
+            <h2 class="processOrder">Process Orders</h2>
+            <table id="processOrderListTable">
+                <thead class="thead"></thead>
+                <tbody class="tbody"></tbody>
+            </table>
+        </div>
+        <div id="viewProductSection" class="viewProduct">
+            <div id="orderNotification" class="notification" style="display:none;">
+                <audio id="orderSound" src="order-notification.mp3" preload="auto"></audio>
+            </div>  
+            <button id="viewAllProduct" class="btn-content">View Product List</button>
+            <button id="searchProduct" class="btn-content">Search Product</button>
+            <input type="text" id="fldName" placeholder="Product Name">
+            <div id="table">
+                <table id="testTable">
+                    <thead class="thead"></thead>
+                    <tbody  class="tbody"></tbody>
+                </table>
+            </div>
+        </div>
+
+        <div id="viewManageAdminAccountSection" class="viewManageAdminAccount">
+            <div id="orderNotification" class="notification" style="display:none;">
+                <audio id="orderSound" src="order-notification.mp3" preload="auto"></audio>
+            </div>  
+            <h2 class="adminList">Admin List</h2>
+      
+            <table id="adminListTable">
+                <thead class="thead"></thead>
+                <tbody class="tbody"></tbody>
+       
+            </table>
+            <button id=addAdminButton class="addAdminButton">Add Admin</button>
+        </div>
+
+        <div id="addAdminModal" class="addAdminModal">
+            <form id="addAdminForm">
+                <h2 class="addAdminTitle">ADD ADMIN</h2>
+                <div class="form-admin">
+                <label for="username">Username:</label>
+                <input type="text" id="username" name="username"><br>
+                <span id="usernameError" class="errorMessage"></span><br>
+                </div>
+
+                <div class="form-admin">
+                <label for="password">Password:</label>
+                <input type="password" id="password" name="password"><br>
+                <span id="passwordError" class="errorMessage"></span><br>
+                </div>
+                
+               <div class="form-admin">
+                <label for="phone">Phone:</label>
+                <input type="text" id="phone" name="phone"><br>
+                <span id="phoneError" class="errorMessage"></span><br>
+               </div>
+                
+                <button type="submit" class="adminAdd">Add Admin</button>
+                <button type="button" id="closeModalBtn" class="adminCancel">Cancel</button> 
+            </form>
+        </div>
+
+        <div id="viewManageCustomerAccountSection" class="viewManageCustomerAccount">
+            <div id="orderNotification" class="notification" style="display:none;">
+                <audio id="orderSound" src="order-notification.mp3" preload="auto"></audio>
+            </div>  
+            <h2 class="customerList">Customer List</h2>
+            <table id="customerListTable">
+                <thead class="thead"></thead>
+                <tbody class="tbody"></tbody>
+            </table>
+        </div>
+
+        <div id="viewOrdersSection" class="viewOrders">
+            <div id="orderNotification" class="notification" style="display:none;">
+                <audio id="orderSound" src="order-notification.mp3" preload="auto"></audio>
+            </div>  
+            <h2 class="orderList">Order List</h2>
+            <button id="viewAllOrder" class="btn-content">View Order List</button>
+            <button id="searchOrder" class="btn-content">Search User ID</button>
+            <input type="number" id="fldUser" placeholder="User ID">
+
+            <table id="orderListTable">
+                <thead class="thead"></thead>
+                <tbody class="tbody"></tbody>
+            </table>        
+        </div>
+        
+
+       
+        <div id="addProductSection" class="addProductForm" enctype="multipart/form-data">
+            <form id="addProductForm">
+                <h2 class="addProductTitle">ADD PRODUCT</h2>
+                <div class="form-element">
+                <label for="name">Name</label>
+                <input type="text" id="name" placeholder="Name">
+                <span id="nameError" class="errorMessage"></span>
+                </div>
+
+                <div class="form-element">    
+                <label for="category">Category</label>
+                <select id="category">
+                    <option value='UrbanBites'>Urban Bites</option>
+                    <option value='BellaCucina'>Bella Cucina</option>
+                    <option value='SweetHaven'>Sweet Haven</option>
+                </select>
+                <span id="categoryError" class="errorMessage"></span>
+                </div>
+
+                <div class="form-element">
+                <label for="price">Price</label>
+                <input type="number" id="price" step="any">
+                <span id="priceError" class="errorMessage"></span>
+                </div>
+
+                <div class="form-element">
+                <label for="quantity">Quantity</label>
+                <input type="number" id="quantity">
+                <span id="quantityError" class="errorMessage"></span>
+                </div>
+
+                
+                <div class="form-element">
+                <label for="description">Description</label>
+                <input type="text" id="description">
+                <span id="descriptionError" class="errorMessage"></span>
+                </div>
+
+                <div class="form-element">
+                <label for="imageFileName">Image File Name</label>
+                <input type="file" id="imageFileName">
+                <span id="imageFileNameError" class="errorMessage"></span>
+                </div>
+
+                <button type="submit" id="btnAdd" class="addButton">Add Product</button>
+            </form>
+        </div>
+
+        <div id="editProductModal" class="modal-editProduct">
+            <form id="editProductForm" class="modal-content">
+                <h2 class="editProductTitle">EDIT PRODUCT</h2>
+                <input type="hidden" id="editProductId">
+                <div class="form-element-edit">
+                <label for="editName">Name</label>
+                <input type="text" id="editName" placeholder="Name">
+                <span id="editNameError" class="errorMessage"></span>
+                </div>
+                
+                <div class="form-element-edit">
+                <label for="editCategory">Category</label>
+                <select id="editCategory">
+                    <option value='Other' disabled>Other</option>
+                    <option value='Phones'>Phones</option>
+                    <option value='Computers'>Computers</option>
+                    <option value='Cameras'>Cameras</option>
+                </select>
+                <span id="editCategoryError" class="errorMessage"></span>
+                </div>
+
+                <div class="form-element-edit">
+                <label for="editPrice">Price</label>
+                <input type="number" id="editPrice" placeholder="Price" step="any">
+                <span id="editPriceError" class="errorMessage"></span>
+                </div>
+
+                <div class="form-element-edit">
+                <label for="editQuantity">Quantity</label>
+                <input type="number" id="editQuantity" placeholder="Quantity">
+                <span id="editQuantityError" class="errorMessage"></span>
+                </div>
+
+                <div class="form-element-edit">
+                <label for="editDescription">Description</label>
+                <input type="text" id="editDescription" placeholder="Description">
+                <span id="editDescriptionError" class="errorMessage"></span>
+                </div>
+
+                <div class="form-element-edit">
+                <label for="editImageFileName">Image File Name</label>
+                <input type="file" id="editImageFileName" placeholder="Image File Name">
+                <span id="editImageFileNameError" class="errorMessage"></span>
+                </div>
+
+                <button type="button" id="btnUpdate" class="updateProductBtn">Update Product</button>
+                <button type="button" id="btnCancel" class="cancelUpdateBtn">Cancel</button>
+            </form>
+        </div>
+
+        <div id="editStatusModal" class="editStatusModal">
+            <form id="editStatusForm" class="modal-content">
+                <div class="form-element-edit">
+                <label for="editStatusCategory">Category</label>
+                <select id="editStatusCategory">
+                    <option value='Pending'>Pending</option>
+                    <option value='Cancelled'>Cancelled</option>
+                    <option value='Dropped'>Dropped</option>
+                    <option value='Delivered'>Delivered</option>
+                </select>
+                <span id="editCategoryError" class="errorMessage"></span>
+                </div>
+
+                <button type="button" id="btnStatusUpdate" class="updateStatusBtn">Update Status</button>
+                <button type="button" id="btnStatusCancel" class="cancelUpdateBtn">Cancel</button>
+            </form>
+        </div>
+
+        <div id="editOrderStatusModal" class="editOrderStatusModal">
+            <form id="editOrderStatusForm" class="modal-content">
+                <div class="form-element-edit">
+                <label for="editOrderStatusCategory">Category 2</label>
+                <select id="editOrderStatusCategory">
+                    <option value='Accepted'>Accept</option>
+                    <option value='Rejected'>Reject</option>
+                </select>
+                <span id="editCategory2Error" class="errorMessage"></span>
+                </div>
+
+                <button type="button" id="btnOrderStatusUpdate" class="updateOrderStatusBtn">Update Status</button>
+                <button type="button" id="btnOrderStatusCancel" class="cancelUpdateBtn">Cancel</button>
+            </form>
+        </div>
+
+        <div id="assignDeliveryModal" class="assignDeliveryModal">
+            <form id="assignDeliveryForm" class="modal-content">
+                <div class="form-element-edit">
+                    <label for="deliveryPersonnel">Assign Delivery Personnel</label>
+                    <select id="deliveryPersonnel">
+                        <option value="Delivery Guy 1">Delivery Guy 1</option>
+                    </select>
+                </div>
+                <button type="button" id="btnAssignDelivery" class="assignDeliveryBtn">Assign</button>
+                <button type="button" id="btnAssignCancel" class="cancelAssignBtn">Cancel</button>
+            </form>
+        </div>
+    </div>
+</body>
+<script>
+</script>
+</html>

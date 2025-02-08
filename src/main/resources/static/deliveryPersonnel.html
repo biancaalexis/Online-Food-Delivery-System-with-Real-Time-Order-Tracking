@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Delivery Personnel Home</title>
+    <link href="https://fonts.googleapis.com/css?family=Noto+Sans+JP&display=swap" rel="stylesheet">
+    <link rel="icon" type="image/png" href="images/c.png">
+    <link rel="stylesheet" href="deliveryPersonnel.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="deliveryPersonnel.js"></script>
+</head>
+<body>
+     <!--  notification bar -->
+    <div id="deliveryNotification" class="notification" style="display:none;">
+        <audio id="orderSound" src="order-notification-customer.mp3" preload="auto"></audio>
+    </div> 
+    <div class="containerD-btn">
+        <img src="img/mainlogo.png" class="logo">
+        <h3 class="welcomeMessage">WELCOME, DELIVERY PERSONNEL!</h3>
+        <button id="assignOrderBtn" class="btn-menu">Assign Orders</button><br>
+        <button id="completedOrdersBtn" class="btn-menu">Completed Orders</button><br>
+        <button id="logOutBtn" class="btn-menu">Log Out</button>       
+    </div>
+
+    <div class="contentD">
+        <div id="viewAssignOrdersSection" class="viewAssignOrders">
+            <h2 class="assignOrders">Assign Orders</h2>
+            <table id="assignOrderListTable">
+                <thead class="thead"></thead>
+                <tbody class="tbody"></tbody>
+            </table>
+        </div>
+
+        <div id="assignDeliveryModal" class="assignDeliveryModal">
+            <form id="assignDeliveryForm" class="modal-content">
+                <div class="form-element-edit">
+                    <label for="deliveryPersonnel">Order</label>
+                    <select id="deliveryPersonnel">
+                        <option value="Picked Up">Picked Up</option>
+                    </select>
+                </div>
+                <button type="button" id="btnAssignDelivery" class="assignDeliveryBtn">Assign</button>
+                <button type="button" id="btnAssignCancel" class="cancelAssignBtn">Cancel</button>
+            </form>
+        </div>
+
+
+        <div id="viewCompletedOrdersSection" class="viewCompletedOrders">
+            <h2 class="completedOrders">Completed Orders</h2>
+            <table id="completedOrderListTable">
+                <thead class="thead"></thead>
+                <tbody class="tbody"></tbody>
+            </table>
+        </div>
+
+        <div id="orderStatusDeliveryModal" class="orderStatusDeliveryModal">
+            <form id="orderStatusDeliveryForm" class="modal-content">
+                <div class="form-element-edit">
+                    <label for="editOrderStatusDelivery">Order Status Delivery</label>
+                    <select id="editOrderStatusDelivery">
+                        <option value='Picked Up'>Picked Up</option>
+                        <option value='In Transit'>In Transit</option>
+                        <option value='Delivered'>Delivered</option>
+                    </select>
+                </div>
+                <button type="button" id="btnOrderStatusDelivery" class="assignOrderStatus">Update</button>
+                <button type="button" id="btnOrderStausCancel" class="cancelOrderStatusBtn">Cancel</button>
+            </form>
+        </div>
+    </div>
+</body>
+</html>
